@@ -13,11 +13,11 @@ public class LaserBeam : MonoBehaviour
 
     private const float _longestBeamDistance = 100f;
 
-    private Mirror _mirrorTheBeamHit;
+    private OpticalElement _mirrorTheBeamHit;
     
     private LineRenderer _lineRenderer;
 
-    public Mirror MirrorTheBeamHit { 
+    public OpticalElement MirrorTheBeamHit { 
         get => _mirrorTheBeamHit; 
         set {
             if (_mirrorTheBeamHit == value) {
@@ -51,7 +51,7 @@ public class LaserBeam : MonoBehaviour
             endPosition = hit.point;
             hitNormal = hit.normal;
 
-            if (hit.collider.TryGetComponent(out Mirror mirror)) {
+            if (hit.collider.TryGetComponent(out OpticalElement mirror)) {
                 MirrorTheBeamHit = mirror;
             }
             else {
