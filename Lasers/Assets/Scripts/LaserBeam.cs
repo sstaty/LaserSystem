@@ -15,25 +15,25 @@ public class LaserBeam : MonoBehaviour
 
     private const float _longestBeamDistance = 100f;
 
-    private OpticalElement _mirrorTheBeamHit;
+    private OpticalElement _opticalElementThatTheBeamHit;
     
     private LineRenderer _lineRenderer;
 
     public OpticalElement OpticalElementThatTheBeamHit { 
-        get => _mirrorTheBeamHit; 
+        get => _opticalElementThatTheBeamHit; 
         set {
-            if (_mirrorTheBeamHit == value) {
+            if (_opticalElementThatTheBeamHit == value) {
                 return;
             }
             else {
-                if (_mirrorTheBeamHit != null) {
-                    _mirrorTheBeamHit.UnregisterLaserBeam(this);
+                if (_opticalElementThatTheBeamHit != null) {
+                    _opticalElementThatTheBeamHit.UnregisterLaserBeam(this);
                 }
 
-                _mirrorTheBeamHit = value;
+                _opticalElementThatTheBeamHit = value;
 
-                if (_mirrorTheBeamHit != null) {
-                    _mirrorTheBeamHit.RegisterLaserBeam(this);
+                if (_opticalElementThatTheBeamHit != null) {
+                    _opticalElementThatTheBeamHit.RegisterLaserBeam(this);
                 }
             }
         }
