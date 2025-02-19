@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 
+[RequireComponent(typeof(Collider))]
 public class Mirror : OpticalElement
 {
     private List<LaserBeamPair> laserBeamPairs = new List<LaserBeamPair>();
@@ -16,8 +17,8 @@ public class Mirror : OpticalElement
     public override void UnregisterLaserBeam(LaserBeam laserBeam) {
         var pair = GetPairFromIncomingBeam(laserBeam);
 
-        if (pair.outgoing.MirrorTheBeamHit != null) {
-            pair.outgoing.MirrorTheBeamHit.UnregisterLaserBeam(pair.outgoing);
+        if (pair.outgoing.OpticalElementThatTheBeamHit != null) {
+            pair.outgoing.OpticalElementThatTheBeamHit.UnregisterLaserBeam(pair.outgoing);
         }
 
         laserBeamPairs.Remove(pair);

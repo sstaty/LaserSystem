@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserBeam : MonoBehaviour
 {
+    public float width = 0.1f;
+
     public Vector3 StartPosition;
     public Vector3 EndPosition;
     public Vector3 HitNormal;
@@ -17,7 +19,7 @@ public class LaserBeam : MonoBehaviour
     
     private LineRenderer _lineRenderer;
 
-    public OpticalElement MirrorTheBeamHit { 
+    public OpticalElement OpticalElementThatTheBeamHit { 
         get => _mirrorTheBeamHit; 
         set {
             if (_mirrorTheBeamHit == value) {
@@ -41,6 +43,8 @@ public class LaserBeam : MonoBehaviour
     private void Awake() {                                                                                                               
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
+        _lineRenderer.startWidth = width;
+        _lineRenderer.endWidth = width;
     }
 
     public void Propagate(Vector3 startPosition, Vector3 direction) {
@@ -51,15 +55,15 @@ public class LaserBeam : MonoBehaviour
             endPosition = hit.point;
             hitNormal = hit.normal;
 
-            if (hit.collider.TryGetComponent(out OpticalElement mirror)) {
-                MirrorTheBeamHit = mirror;
+            if (hit.collider.TryGetComponent(out OpticalElement opticalElement)) {
+                OpticalElementThatTheBeamHit = opticalElement;
             }
             else {
-                MirrorTheBeamHit = null;
+                OpticalElementThatTheBeamHit = null;
             }
         }
         else {
-            MirrorTheBeamHit = null;
+            OpticalElementThatTheBeamHit = null;
         }
 
         StartPosition = startPosition;
@@ -67,8 +71,8 @@ public class LaserBeam : MonoBehaviour
         HitNormal = hitNormal;
         UpdateVisuals();
 
-        if (MirrorTheBeamHit) {
-            MirrorTheBeamHit.Propagate(this);
+        if (OpticalElementThatTheBeamHit) {
+            OpticalElementThatTheBeamHit.Propagate(this);
         }
     }
 

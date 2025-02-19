@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6522937004486850950}
   - component: {fileID: 637134397101476974}
   m_Layer: 0
-  m_Name: Laser Beam
+  m_Name: Laser Beam - Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79df67faf508b434fab9d1364b135849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 0.03
   StartPosition: {x: 0, y: 0, z: 0}
   EndPosition: {x: 0, y: 0, z: 0}
   HitNormal: {x: 0, y: 0, z: 0}
@@ -73,7 +74,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49d3705f899ddfe4185cfef2c3729484, type: 2}
+  - {fileID: 2100000, guid: 706a37970053386499c15068a4f31b01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +147,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 5
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
